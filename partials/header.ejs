@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NearBy Me</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        <style>
+            p {
+                font-size: 1.2em;
+            }
+        </style>
+        
+    </head>
+    <body style="margin-top: 30px">
+        
+        <div class="container">
+            <header class="jumbotron">
+                <div class="container">
+                    <h1>Welcome To NearBy Me!</h1>
+                    <p>
+                        Looking for something? But don't know where you will find it?
+                        NearBy Me allows you to search for any store, item, food, clothing, government services, parks etc. that you are looking for and 
+                        in return it provides you with the places near by you with some additional details. Some e.g you can search:- pizza, sandwich, coffee, clothes, 
+                        shoes, cell phone cases, etc.  
+                        <a href="https://www.yelp.ca/developers/documentation/v2/all_category_list" target="_blank">Categories You Can Search</a>
+                    </p>
+                    <p>
+                        Please help make NearBy Me better by adding or by correcting missing/wrong information by clicking on the store/place name. 
+                    </p>
+                </div>
+            </header>
+            
+            <div style="margin-bottom: 2em">
+                <form class="form-inline text-center" action="/" method="POST">
+                    <input class="form-control" type="text" placeholder="Search for food, clothing, services or any item" name="searchTerm" required>
+                    <input class="form-control" type="text" placeholder="zip/postal code" name="zipCode" pattern="(^\d{5}(-\d{4})?$)|(^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$)" title="Zip code should match the following format: US - 29020, Canada - L7M0E1" required>
+                    <input class="custom-control-input" type="checkbox" name="distance" style="margin-left:10px"> Sort by Distance
+                    <button class="btn btn-info btn-sm" style="margin-left:10px">Search</button>
+                </form>
+            </div>

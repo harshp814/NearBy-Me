@@ -1,0 +1,88 @@
+<% include ../partials/header %>
+
+    <% if (stores.length != 0) { %>
+    
+            <% stores.forEach(function(store) { %>
+                
+                <div class="well">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            
+                            <h2 style="margin:0">
+                                <a href="<%= store.url %>" target="_blank" style="color: inherit"><%= store.name %></a>
+                            </h2>
+                            
+                            <p>
+                                <% var str = ""; %>
+                                <% store.categories.forEach(function(category){ %>
+                                                <% str = str + category.title + ", " %> 
+                                             <% }); %>
+                                <% str = str.substring(0, str.length-2) %>
+                                Categories:- <%= str %>
+                            </p>
+                            <p>
+                                <strong>Rating:-</strong> <%= store.rating %>/5
+                            </p>
+                        </div>
+                        
+                        <div class="col-sm-5">
+                            <p>
+                                <% if (store.hasOwnProperty("hours")) { %>
+                                    <% if (store.hours[0].is_open_now) { %>
+                                        <i class="fa fa-circle" style="color:green" aria-hidden="true"></i> Open
+                                    <% } else { %>
+                                        <i class="fa fa-circle" style="color:red" aria-hidden="true"></i> Closed
+                                    <% } %>
+                                <% } %>
+                            </p>
+                            <p>
+                                <strong>Phone:-</strong> <%= store.display_phone %>
+                            </p>
+                            <p>
+                                <strong>Address:-</strong> <%= store.location.display_address %>
+                            </p>
+                            <p>
+                                <% function findStore(x) {return x.id === store.id;} %>
+                                <% var temp = forDist.find(findStore) %>
+                                <strong>Distance:-</strong> <%= (temp.distance/1000).toFixed(1) %> kms
+                            </p>
+                        </div>
+                        
+                        <div class="col-sm-3" style="margin:0; padding:0; text-align:center">
+                            <p>
+                                <% if (store.hasOwnProperty("hours")) { %>
+                                    
+                                        <strong> Hours </strong> <br>
+                                    
+                                        <% store.hours[0].open.forEach(function(time) { %>
+                                            <% time.start = time.start.substring(0,2) + ":" + time.start.substring(2,4); %>
+                                            <% time.end = time.end.substring(0,2) + ":" + time.end.substring(2,4); %>
+                                            <% if (time.day === 0) { %> </t>
+                                                Sun - <%= time.start %> - <%= time.end %> <br>
+                                            <% } else if (time.day === 1) { %>
+                                                Mon - <%= time.start %> - <%= time.end %> <br>
+                                            <% } else if (time.day === 2) { %>
+                                                Tue - <%= time.start %> - <%= time.end %> <br>
+                                            <% } else if (time.day === 3) { %>
+                                                Wed - <%= time.start %> - <%= time.end %> <br>
+                                            <% } else if (time.day === 4) { %>
+                                                Thu - <%= time.start %> - <%= time.end %> <br>
+                                            <% } else if (time.day === 5) { %>
+                                                Fri - <%= time.start %> - <%= time.end %> <br>
+                                            <% } else if (time.day === 6) { %>
+                                                Sat - <%= time.start %> - <%= time.end %> <br>
+                                            <% } %>
+                                        <% }) %>
+                                <% } %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+            <% }); %>
+    <% } else { %>
+            <div class="container" style="text-align:center">
+                <h3> Oops!! Couldn't find anything. Please make sure the information entered is correct!! </h3>
+            </div>
+    <% } %>
+<% include ../partials/footer %>
