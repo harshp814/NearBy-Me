@@ -1,1 +1,1 @@
-NearBy Me is a search tool which allows user to search for items or any specific store that they are looking for and it returns a list of stores that are near by them, with some additional information like store hours, address, phone etc.
+NearBy Me is a search tool which allows user to search for items or any specific store that they are looking for. It returns a list of stores that has that item and are near by them, with some additional information like store hours, address, phone etc.
