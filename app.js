@@ -22,13 +22,11 @@ app.post("/", function(req, res){
     var searchTerm = req.body.searchTerm;
     var zipCode = req.body.zipCode;
     var fullData = []; 
-    var isValidZip = /(^\d{5}(-\d{4})?$)|(^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$)/.test(zipCode);
+    var isValidZip = /(^\d{5}(-\d{4})?$)|(^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$)/.test(zipCode.toUpperCase());
     
     
     
     if (isValidZip) {
-        
-        if (req.body.distance) {
         
             yelp.search({term: searchTerm, location: zipCode}).then(function(data){
                 var parsedData = JSON.parse(data);
@@ -59,24 +57,23 @@ app.post("/", function(req, res){
                     res.render("index.ejs", {stores: fullData, forDist: stores});
                 }, 3000);
             });
-            
-        } else {
-            yelp.search({term: searchTerm, location: zipCode}).then(function(data){
-                var parsedData = JSON.parse(data);
-                var stores = parsedData.businesses; 
+        // } else {
+        //     yelp.search({term: searchTerm, location: zipCode}).then(function(data){
+        //         var parsedData = JSON.parse(data);
+        //         var stores = parsedData.businesses; 
                 
-                stores.forEach(function(store){
-                    yelp.business(store.id).then(function(businessData){
-                        businessData = JSON.parse(businessData);
-                        fullData.push(businessData);
-                    });
-                });
+        //         stores.forEach(function(store){
+        //             yelp.business(store.id).then(function(businessData){
+        //                 businessData = JSON.parse(businessData);
+        //                 fullData.push(businessData);
+        //             });
+        //         });
                 
-                setTimeout(function(){
-                    res.render("index.ejs", {stores: fullData, forDist: stores});
-                }, 3000);
-            });
-        }
+        //         setTimeout(function(){
+        //             res.render("index.ejs", {stores: fullData, forDist: stores});
+        //         }, 3000);
+        //     });
+        // }
     } else {
         res.render("landing.ejs");
     }
@@ -85,3 +82,4 @@ app.post("/", function(req, res){
 
 
 app.listen(process.env.PORT, process.env.IP, function(){});
+
