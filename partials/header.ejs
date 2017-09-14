@@ -34,8 +34,8 @@
             <div style="margin-bottom: 2em">
                 <form class="form-inline text-center" action="/" method="POST">
                     <input class="form-control" type="text" placeholder="Search for food, clothing, services or any item" name="searchTerm" required>
-                    <input class="form-control" type="text" placeholder="zip/postal code" name="zipCode" pattern="(^\d{5}(-\d{4})?$)|(^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$)" title="Zip code should match the following format: US - 29020, Canada - L7M0E1" required>
-                    <input class="custom-control-input" type="checkbox" name="distance" style="margin-left:10px"> Sort by Distance
+                    <input class="form-control" type="text" placeholder="zip/postal code" name="zipCode" pattern="^(?i)(^\d{5}(-\d{4})?$)|(^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$)" title="Zip code should match the following format: US - 29020, Canada - L7M0E1" required>
+                    <!--<input class="custom-control-input" type="checkbox" name="distance" style="margin-left:10px"> Sort by Distance-->
                     <button class="btn btn-info btn-sm" style="margin-left:10px">Search</button>
                 </form>
             </div>
